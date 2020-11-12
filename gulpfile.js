@@ -1,4 +1,4 @@
-var {task, watch, parallel} = require("gulp");
+var {task, watch, parallel, series} = require("gulp");
 var {server} = require("gulp-connect");
 
 var htmlHandler = require("./gulp-modules/html-handler");
@@ -18,3 +18,5 @@ function serve() {
 }
 
 task("mytask", parallel(serve, watchAll));
+
+task("build", series(htmlHandler, cssHandler))
